@@ -8,36 +8,36 @@ class bank:
         self.name=input("enter account holder name = ")
         self.accno=int(input("enter account number = "))
         self.balance=int(input("enter balance = "))
-        self.bankd[self.name]=[self.accno,self.balance]
+        self.bankd[self.accno]=[self.name,self.balance]
     def showallacc(self):
         if len(self.bankd.keys())==0:
             print("No account opened.....")
         else:
             for k,v in self.bankd.items():
-                print(f"name = {k}, account no. = {v[0]}, balance = {v[1]}")
+                print(f"account no. = {k}, name = {v[0]}, balance = {v[1]}")
     def showacc(self):
-        accname=input("enter account holder name whose account detail you want to see = ")
-        d=self.bankd[accname]
+        accno=int(input("enter account number whose account detail you want to see = "))
+        d=self.bankd[accno]
         if d:
-            print(f"name = {accname}, account no. = {d[0]}, balance = {d[1]}")
+            print(f"account no. = {accno}, name = {d[0]},  balance = {d[1]}")
         else:
             print("No record found.....")
     def diposit(self):
-        accname=input("enter account holder name whom account's you want to deposit rupees = ")
+        accno=int(input("enter account number whom account's you want to deposit rupees = "))
         amt=int(input("enter amount you want to deposit = "))
-        d=self.bankd[accname]
+        d=self.bankd[accno]
         d[1]+=amt
-        print(f"{amt} rupees deposited to acc no. - {d[0]}")
+        print(f"{amt} rupees deposited to acc no. - {accno}")
 
     def withdraw(self):
-        accname=input("enter account holder name whom account's you want to withdraw rupees = ")
-        d=self.bankd[accname]
+        accno=int(input("enter account number whom account's you want to withdraw rupees = "))
+        d=self.bankd[accno]
         amt=int(input("enter amount you want to withdraw = "))
         if amt<=d[1]:
             d[1]-=amt
         else:
             print("not enough money")
-        print(f"{amt} rupees withdrawed from acc no. - {d[0]}")
+        print(f"{amt} rupees withdrawed from acc no. - {accno}")
 
 print(".....main menu.....")
 print("1. open account")
